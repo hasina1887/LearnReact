@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React tutorial</title>
+    <script src="https://fb.me/react-0.14.7.js"></script>
+    <script src="https://fb.me/react-dom-0.14.7.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.2/browser.min.js"></script>
+   <style>
+   body {
+  padding: 40px;
+  font-family: "helvetica neue", sans-serif;
+}
+   .container{
+      width: 600px;
+  margin: auto;
+  color: black;
+  padding: 20px;
+  text-align: center;
+   }
+   .container .btn{
+     border: 0;
+  padding: 15px;
+  margin: 10px;
+  width: 20%;
+  font-size: 15px;
+  outline: none;
+  border-radius: 3px;
+	border:none;
+	color:white;
+   }
+   .container h2{
+   text-align:center;
+   }
+   
+   .blue-btn{
+	background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+}
+
+.btn.blue-btn:hover {
+   background-color: #6FC6FF;
+}
+  .btn.green-btn {
+  background-color: #2ecc71;
+  box-shadow: 0px 5px 0px 0px #15B358;
+}
+
+.btn.green-btn:hover {
+  background-color: #48E68B;
+}
+
+.btn.purple-btn {
+  background-color: #9b59b6;
+  box-shadow: 0px 5px 0px 0px #82409D;
+}
+
+.btn.purple-btn:hover {
+  background-color: #B573D0;
+}
+   </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+	var CounterComponent = React.createClass({
+	incrementCounter:function(value){
+		let currentCounter = this.state.counter;
+		this.setState({
+		counter : currentCounter + value
+		});
+	},	
+	getInitialState: function() {
+        return {
+          counter: 0
+        }
+      },
+	render: function(){
+		
+		return (
+			<div className="container">
+				 <h2>Count : {this.state.counter} </h2>
+				 
+				<button className="btn blue-btn" onClick={this.incrementCounter.bind(this,1)}>Add 1</button>
+				<button className="btn green-btn" onClick={this.incrementCounter.bind(this,5)}>Add 5</button>
+				<button className="btn purple-btn" onClick={this.incrementCounter.bind(this,10)}>Add 10</button>
+				</div>
+				
+		)
+	}
+	
+	});
+	
+	ReactDOM.render(
+	<CounterComponent/>,
+	document.getElementById('app')
+	);
+    </script>
+  </body>
+</html>
